@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Chat2Scenic: Iterative RAG-Based Framework for Autonomous Driving Scenario Generation</title>
+  <title>Trajectory Planning and Control at the Limits: an Open Experimental Benchmark on the RoboRacer Platform</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
   <style>
@@ -540,8 +540,8 @@
 
 <!-- ══════════ HERO ══════════ -->
 <header class="hero">
-  <div class="venue">IROS 2026 &nbsp;·&nbsp; Autonomous Driving</div>
-  <h1>Chat2Scenic: An Iterative <span>RAG-Based</span> Framework for<br/>Automated Driving Scenario Generation</h1>
+  <div class="venue">ITSC 2026 &nbsp;·&nbsp; Automated Vehicles at the Limits: Lessons and Opportunities from the Racetrack</div>
+  <h1>Trajectory Planning and Control at the Limits:\\an Open Experimental Benchmark on the RoboRacer Platform</h1>
   <p class="authors">Anonymous Authors &nbsp;·&nbsp; Anonymous Institution &nbsp;·&nbsp; Under Review</p>
   <div class="btn-row">
     <a href="#" class="btn btn-white">
@@ -562,8 +562,8 @@
 <!-- ══════════ CONCEPT FIGURE ══════════ -->
 <div style="max-width:1280px;margin:0 auto;padding:0 24px;">
   <figure class="fig" style="margin-top:48px;">
-    <img src="static/images/framework_hd-1.png" alt="Chat2Scenic Framework Architecture" style="max-width:100%;width:100%;" />
-    <figcaption><strong>Figure 1.</strong> Chat2Scenic framework architecture showing the Interactive Module, RAG Module, and Generation Module with iterative component-wise generation pipeline.</figcaption>
+    <img src="static/images/framework_overview_new.pdf" alt="Framework Architecture" style="max-width:100%;width:100%;" />
+    <figcaption><strong>Figure 1.</strong> (a) Overview of our trajectory planning and control framework, and (b) real-world results obtained by deploying the framework on our RoboRacer.</figcaption>
   </figure>
 </div>
 
@@ -572,10 +572,8 @@
   <div class="container">
     <h2>Abstract</h2>
     <div class="abstract-box">
-      Validating autonomous driving systems requires diverse, regulation-compliant test scenarios. In simulation-based testing, scenarios are defined as executable DSL scripts that parametrically specify road topology, actor behaviors, and environmental conditions for simulators such as CARLA. Yet automatically generating such scripts from complex regulatory descriptions remains an open challenge, and existing approaches face fundamental trade-offs: retrieval-assemble methods achieve reasonable compilation rates but lack scalability, while retrieval-based full-script generation suffers from low compilation success.
-      <br/><br/>
-      We present <strong>Chat2Scenic</strong>, the first iterative retrieval-augmented framework to automatically translate natural language regulatory descriptions into executable Scenic DSL scripts. Chat2Scenic provides a chatbot interface for interactive scenario refinement and integrates RAG to ground scenario generation in regulatory knowledge and DSL syntax. We further propose an open benchmark comprising <strong>123 scenarios</strong> drawn from NHTSA, United Nations Vehicle Regulations, and the CARLA Leaderboard. Chat2Scenic achieves a <strong>Compilation Success Rate of 76.42%</strong> and a <strong>Framework Accuracy of 58.17%</strong>, outperforming retrieval-assemble (30% CSR, 11.03% FA) and retrieval full-script generation (16.26% CSR, 10.08% FA). We release our open-source code to facilitate future developments.
-    </div>
+      Autonomous racing has become a valuable platform to advance high-performance motion planning and control for autonomous vehicles. Traditional geometric controllers are robust and computationally efficient but fail to capture complex vehicle dynamics, while purely model-based or learning-based methods face limitations in real-time performance or data requirements. This paper proposes a hybrid control framework combining a Model-Structured Neural Network (MS-NN) for steering with a Forward-Backward velocity replanning module (FBGA), integrating prior vehicle dynamics knowledge into a data-driven architecture. The approach is validated on the F1Tenth autonomous racing platform using ROS2, including real-world testing with LiDAR-based mapping, raceline generation, and varying track conditions. Experimental results demonstrate improved trajectory tracking, reduced velocity error, and faster lap times compared to conventional controllers. The framework offers a modular solution that bridges model-based and learning-based control, enhancing both performance and adaptability in autonomous racing.
+   </div>
   </div>
 </section>
 
@@ -586,18 +584,23 @@
     <div class="contrib-grid">
       <div class="contrib-card">
         <div class="num">1</div>
-        <h3>Chat2Scenic Framework</h3>
-        <p>We propose Chat2Scenic, a chatbot-based iterative component-wise generation framework with advanced prompting techniques and RAG, outperforming SOTA methods with released code in compilation success rate, semantic accuracy, and framework accuracy.</p>
+        <h3>Trajectory–tracking and Planning Framework</h3>
+        <p>We present a comprehensive benchmark of real-time trajectory–tracking and planning controllers, combining existing methods that, to the best of our knowledge, have never been used together nor experimentally validated on a real-world autonomous platform.</p>
       </div>
       <div class="contrib-card">
         <div class="num">2</div>
-        <h3>Regulation-Grounded Benchmark</h3>
-        <p>We curate 120+ ADS scenario descriptions from the CARLA Leaderboard, NHTSA, and United Nations Vehicle Regulations, and propose dedicated metrics to evaluate both framework-level performance (e.g., compilation success rate and framework accuracy) and application-level performance (semantic accuracy).</p>
+        <h3>Online Velocity Replanning</h3>
+        <p>We analyze the impact of online velocity replanning on closed-loop performance and lap-time reduction. In particular, we evaluate an existing real-time velocity replanner based on generic GGV constraints, which has never been tested on a physical vehicle before.</p>
       </div>
       <div class="contrib-card">
         <div class="num">3</div>
         <h3>Comprehensive Evaluation</h3>
-        <p>We evaluate Chat2Scenic across closed- and open-source LLMs, conduct ablation studies on prompting techniques, and benchmark against SOTA methods.</p>
+        <p>We conduct extensive real-world experiments on a 1:10 scale autonomous racing platform. New MS-NN, which is for the first time applied to a real vehicle at the handling limits. To encourage reproducibility and support future research, we publicly release all software modules and the datasets collected during testing.</p>
+      </div>
+      <div class="contrib-card">
+        <div class="num">4</div>
+        <h3>Ablation Study</h3>
+        <p>We perform ablation studies removing the MS-NN steer controller and the velocity replanning module to quantify their impact. All code, datasets, and results are publicly available.</p>
       </div>
     </div>
   </div>
