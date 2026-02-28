@@ -607,50 +607,31 @@
   <div class="container">
     <h2>Scenarios</h2>
     <p>Experimental Test with different Controllers </p>
-    
-    <!-- Category tabs -->
-    <div class="bench-tabs" id="demo-cat-tabs" style="margin-bottom:0;">
-      <button class="bench-tab active" onclick="selectDemoCat('carla',this)">CARLA Leaderboard</button>
-      <button class="bench-tab" onclick="selectDemoCat('crash',this)">NHTSA Crash</button>
-      <button class="bench-tab" onclick="selectDemoCat('precrash',this)">NHTSA PreCrash</button>
-      <button class="bench-tab" onclick="selectDemoCat('r152',this)">UN R152</button>
-      <button class="bench-tab" onclick="selectDemoCat('r171',this)">UN R171</button>
-    </div>
-
-    <!-- Scenario navigator -->
-    <div style="display:flex;align-items:center;justify-content:space-between;margin:18px 0 10px;">
-      <button class="demo-nav-btn" onclick="stepDemo(-1)">&#8592; Prev</button>
-      <span id="demo-counter" style="font-size:0.9rem;color:var(--muted);"></span>
-      <button class="demo-nav-btn" onclick="stepDemo(1)">Next &#8594;</button>
-    </div>
-
+  
     <!-- Video control buttons -->
     <div style="display:flex;justify-content:center;gap:12px;margin-bottom:10px;">
       <button onclick="controlAllVideos('play')" style="padding:8px 24px;border-radius:999px;border:2px solid var(--accent);background:var(--accent);color:#fff;font-size:0.9rem;font-weight:600;cursor:pointer;letter-spacing:0.04em;transition:all 0.15s;">▶ Play All</button>
       <button onclick="controlAllVideos('pause')" style="padding:8px 24px;border-radius:999px;border:2px solid var(--mid);background:var(--white);color:var(--mid);font-size:0.9rem;font-weight:600;cursor:pointer;letter-spacing:0.04em;transition:all 0.15s;">⏸ Pause</button>
       <button onclick="controlAllVideos('reset')" style="padding:8px 24px;border-radius:999px;border:2px solid var(--mid);background:var(--white);color:var(--mid);font-size:0.9rem;font-weight:600;cursor:pointer;letter-spacing:0.04em;transition:all 0.15s;">↺ Reset</button>
-      <video id="teaser" autoplay muted loop playsinline height="100%">
+    </div>
+    <div style="max-width:1280px;margin:0 auto;padding:0 24px;">
+      <video  class="video" style="margin-top:48px;" id="video2" autoplay muted loop playsinline>
         <source src="./static/videos/Media1.mp4"
-                type="video/mp4">
-      </video>
-      <h2 class="subtitle has-text-centered">
-        An example video to attract people.
-      </h2>
-      <video id="teaser" autoplay muted loop playsinline height="100%">
-        <source src="./static/videos/evoluzione_tracking_ppnn_con_video_allineato.mp4"
-                type="video/mp4">
+                type="video/mp4" style="max-width:90%;width:90%;">
       </video>
       <h2 class="subtitle has-text-centered">
         An example video to attract people.
       </h2>
     </div>
-
-    <!-- Three video players -->
-    <div id="demo-videos" class="demo-video-grid"></div>
-
-    <!-- Description -->
-    <div id="demo-desc" class="demo-desc"></div>
-  </div>
+     <div style="max-width:1280px;margin:0 auto;padding:0 24px;">
+      <video class="video" style="margin-top:48px;" id="video2" autoplay muted loop playsinline>
+        <source src="./static/videos/evoluzione_tracking_ppnn_con_video_allineato.mp4"
+                type="video/mp4" style="max-width:90%;width:90%;">
+      </video>
+      <h2 class="subtitle has-text-centered">
+        An example video to attract people.
+      </h2>
+    </div>
 </section>
 
 <!-- ══════════ RESULTS ══════════ -->
