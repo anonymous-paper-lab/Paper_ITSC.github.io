@@ -606,7 +606,9 @@
 <section id="demos">
   <div class="container">
     <h2>Experimental Test</h2>
-
+      <p class="subtitle has-text-centered">
+        Example of execution layout track a.
+      </p>
     <!-- Video 1 -->
     <div style="width:100%; margin:0 auto; padding:0 24px;">
       <video 
@@ -614,23 +616,18 @@
         autoplay muted loop playsinline>
         <source src="./static/videos/Media1.mp4" type="video/mp4">
       </video>
-
-      <h2 class="subtitle has-text-centered">
-        Example of execution layout track a.
-      </h2>
     </div>
 
     <!-- Video 2 -->
+      <p class="subtitle has-text-centered">
+        Example of execution layout track b.
+      </p>
     <div style="width:100%; margin:0 auto; padding:0 24px;">
       <video 
         style="width:100%; height:auto; margin-top:48px; display:block;"
         autoplay muted loop playsinline>
         <source src="./static/videos/evoluzione_tracking_ppnn_con_video_allineato.mp4" type="video/mp4">
       </video>
-
-      <h2 class="subtitle has-text-centered">
-        Example of execution layout track b.
-      </h2>
     </div>
 
   </div>
@@ -640,20 +637,24 @@
 <section>
   <div class="container">
     <h2>Quantitative Results</h2>
-    <p>All experiments use CARLA 0.9.15 + Scenic 3.1.0 on a Dell Alienware R15 (Intel i7-13700KF, NVIDIA RTX 4090, 128 GB RAM). The best configuration <strong>C11</strong> (CP + CoT + ICL + CodeICL) with Gemini-3-Flash significantly outperforms all baselines.</p>
+    <p>The overall best performance is achieved by the PP + MS-NN + FBGA configuration under the extended g-g-v envelope, reaching:</p>
 
     <div class="metrics-row">
       <div class="metric-card">
-        <div class="val">76.42<span class="unit">%</span></div>
-        <div class="label">Compilation Success Rate</div>
+        <div class="val">8.3<span class="unit">%</span></div>
+        <div class="label">Lap Time Reduction</div>
       </div>
       <div class="metric-card">
-        <div class="val">76.12<span class="unit">%</span></div>
-        <div class="label">Scenario Quality</div>
+        <div class="val">9.05<span class="unit"> m/s<sup>2</sup></span></div>
+        <div class="label">Maximum Lateral Acceleration</div>
       </div>
       <div class="metric-card">
-        <div class="val">58.17<span class="unit">%</span></div>
-        <div class="label">Framework Accuracy</div>
+        <div class="val">3.018<span class="unit"> m/s<sup>2</sup></span></div>
+        <div class="label">Maximum Longitudinal Acceleration</div>
+      </div>
+      <div class="metric-card">
+        <div class="val">4.522<span class="unit"> m/s</span></div>
+        <div class="label">Maximum Speed</div>
       </div>
     </div>
 </section>
