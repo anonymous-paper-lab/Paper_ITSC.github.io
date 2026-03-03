@@ -558,7 +558,7 @@
 <!-- ══════════ CONCEPT FIGURE ══════════ -->
 <div style="max-width:1280px;margin:0 auto;padding:0 24px;">
   <figure class="fig" style="margin-top:48px;">
-    <img src="static/images/framework_overview_new.svg" alt="Framework Architecture" style="max-width:90%;width:90%;" />
+    <img src="static/images/framework_overview_new.png" alt="Framework Architecture" style="max-width:90%;width:90%;" />
     <figcaption><strong>Figure 1.</strong> (a) Overview of our trajectory planning and control framework, and (b) real-world results obtained by deploying the framework on our RoboRacer.</figcaption>
   </figure>
 </div>
@@ -568,7 +568,7 @@
   <div class="container">
     <h2>Abstract</h2>
     <div class="abstract-box">
-      Autonomous racing has become a valuable platform to advance high-performance motion planning and control for autonomous vehicles. Traditional geometric controllers are robust and computationally efficient but fail to capture complex vehicle dynamics, while purely model-based or learning-based methods face limitations in real-time performance or data requirements. This paper proposes a hybrid control framework combining a Model-Structured Neural Network (MS-NN) for steering with a Forward-Backward velocity replanning module (FBGA), integrating prior vehicle dynamics knowledge into a data-driven architecture. The approach is validated on the F1Tenth autonomous racing platform using ROS2, including real-world testing with LiDAR-based mapping, raceline generation, and varying track conditions. Experimental results demonstrate improved trajectory tracking, reduced velocity error, and faster lap times compared to conventional controllers. The framework offers a modular solution that bridges model-based and learning-based control, enhancing both performance and adaptability in autonomous racing.
+      We present a modular framework to benchmark new and existing methods for trajectory planning and control in high-acceleration maneuvers that push autonomous driving to the limits. Our framework includes time-optimal raceline generation, online time-optimal velocity replanning, geometric path tracking controllers, and a new model-structured neural network (MS-NN) to learn the inverse dynamics for steering control. We deploy our framework on a 1:10-scale RoboRacer platform, using two circuits. Through several ablations with cautious and aggressive racelines, we study the performance of single modules and their combinations. We show that our MS-NN significantly improves tracking accuracy, decreases steering oscillations, and is physically interpretable. Moreover, online velocity replanning improves lap times by compensating for execution errors, and enables the vehicle to safely reach higher speeds and accelerations. To support future research, our code, datasets, videos and results are publicly available on our website.
    </div>
   </div>
 </section>
@@ -580,28 +580,62 @@
     <div class="contrib-grid">
       <div class="contrib-card">
         <div class="num">1</div>
-        <h3>Trajectory–tracking and Planning Framework</h3>
-        <p>We present a comprehensive benchmark of real-time trajectory–tracking and planning controllers, combining existing methods that, to the best of our knowledge, have never been used together nor experimentally validated on a real-world autonomous platform.</p>
+        <h3>Closed-Loop Framework</h3>
+        <p>We benchmark new and existing methods for time-optimal planning and control near the handling limits, including geometric controllers, MS-NN steering controllers, and an online velocity planner. These methods have never been used in a unified closed-loop stack for real-world autonomous racing.</p>
       </div>
       <div class="contrib-card">
         <div class="num">2</div>
-        <h3>Online Velocity Replanning</h3>
-        <p>We analyze the impact of online velocity replanning on closed-loop performance and lap-time reduction. In particular, we evaluate an existing real-time velocity replanner based on generic GGV constraints, which has never been tested on a physical vehicle before.</p>
+        <h3>New Model Structured Neural Network</h3>
+        <p>We present a new MS-NN that learns the nonlinear coupled longitudinal-lateral dynamics for steering control at high accelerations, while preserving interpretability.</p>
       </div>
       <div class="contrib-card">
         <div class="num">3</div>
-        <h3>Comprehensive Evaluation</h3>
-        <p>We conduct extensive real-world experiments on a 1:10 scale autonomous racing platform. New MS-NN, which is for the first time applied to a real vehicle at the handling limits. To encourage reproducibility and support future research, we publicly release all software modules and the datasets collected during testing.</p>
+        <h3>Ablation Study</h3>
+        <p>Through several ablations, we analyze the performance of single modules and their combinations, quantifying the impact of the MS-NN and online velocity replanning on trajectory planning, tracking, and lap-time. </p>
       </div>
       <div class="contrib-card">
         <div class="num">4</div>
-        <h3>Ablation Study</h3>
-        <p>We perform ablation studies removing the MS-NN steer controller and the velocity replanning module to quantify their impact. All code, datasets, and results are publicly available.</p>
+        <h3>Comprehensive Experimental Tests</h3>
+        <p>We conduct our experiments on a 1:10-scale autonomous racing platform, and we publicly release all software modules, datasets, and results.</p>
       </div>
     </div>
   </div>
 </section>
 
+
+<!-- ══════════ METHODS ══════════ -->
+<section>
+  <div class="container">
+    <h2>Methods</h2>
+    <div class="contrib-grid">
+      <div class="contrib-card">
+        <div class="num">1</div>
+        <h3>Time-optimal raceline</h3>
+        <p>Generate offline the time-optimal raceline based on a point-mass model with user-defined acceleration and velocity constraints.</p>
+          <a href="https://github.com/TUMFTM/global_racetrajectory_optimization" class="btn btn-outline">
+        <svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+        Code
+        </a>
+      </div>
+      <div class="contrib-card">
+        <div class="num">2</div>
+        <h3>Path Tracking Controllers</h3>
+        <p>The path-tracking controller computes future path curvature references. We compare two path tracking controllers, the Pure Pursuit (PP) and the Clothoid-based (CL)</p>
+      </div>
+      <div class="contrib-card">
+        <div class="num">3</div>
+        <h3>Online Time-Optimal Velocity Replanning</h3>
+        <p>a velocity replanning module, which computes time-optimal velocity and longitudinal-lateral acceleration profiles over a planning horizon via a forward-backward optimizer (FBGA) accounting for the vehicle's nonlinear constraints on accelerations and velocity. </p>
+      </div>
+      <div class="contrib-card">
+        <div class="num">4</div>
+        <h3>Steering Control: Model-Structured Neural Network</h3>
+        <p>The velocity profile is tracked by the motor controller, while steering commands $\delta$ are generated by a new MS-NN using curvature, velocity, and acceleration references. The estimated vehicle state closes the loop.</p>
+      </div>
+    </div>
+  </div>
+</section>
+  
 <!-- ══════════ QUALITATIVE EXAMPLES ══════════ -->
 <section id="demos">
   <div class="container">
