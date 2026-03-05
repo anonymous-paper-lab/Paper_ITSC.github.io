@@ -676,7 +676,7 @@
       <table id="TrackA-Table">
         <thead>
           <tr>
-            <th rowspan="2" class="sort-th" data-col="0" data-asc="true" onclick="sortAblation(0)">Controller <span class="sort-icon">⇅</span></th>
+            <th rowspan="2" class="sort-th" data-col="0" data-asc="true" onclick="sortAblation(0)">Controller</th>
             <th colspan="2" style="text-align:center;border-bottom:1px solid rgba(255,255,255,0.3);">Path Tracking [cm]</th>
             <th rowspan="2">Lap Time [s] ↓ </th>
             <th rowspan="2">RMS Steering Rate [rad/s] ↓ </th>
@@ -1012,24 +1012,29 @@ const TrackB_ROWS = [
       });
     }
 
-    const rmseVals = rows.map(r=>r[2]);
-    const fvuVals = rows.map(r=>r[3]);
-
-    const bestRMSE = Math.min(...rmseVals);
-    const bestFVU = Math.min(...fvuVals);
+    const Max_v = rows.map(r=>r[3]);
+    const Max_ax = rows.map(r=>r[4]);
+    const Max_ay = rows.map(r=>r[5]);
+    const LapTime = rows.map(r=>r[6]);
+    
+    const bestMax_v = Math.max(...Max_v);
+    const bestMax_ax = Math.max(...Max_ax);
+    const bestMax_ay = Math.max(...Max_ay);
+    const bestLapTime = Math.min(...LapTime);
 
     let html = '';
     let lastTier = null;
     rows.forEach(row => {
-      const [Controller,Mean,Max,LapTime,RMS] = row;
+      const [Controller,Planner,Type,Max_v,Max_ax,Max_ay,LapTime] = row;
       html += "<tr>";
-      if(showDataset){
-      html += `<td rowspan="2">${dataset}</td>`;
-    }
       html += `
-    <td>${method}</td>
-    <td>${rmse === bestRMSE ? "<b>"+rmse.toFixed(4)+"</b>" : rmse.toFixed(4)}</td>
-    <td>${fvu === bestFVU ? "<b>"+fvu.toFixed(4)+"</b>" : fvu.toFixed(4)}</td>
+    <td>${Controller}</td>
+    <td>${Planner}</td>
+    <td>${Type}</td>
+    <td>${Max_v === bestMax_v ? "<b>"+Max_v.toFixed(4)+"</b>" : Max_v.toFixed(4)}</td>
+    <td>${Max_ax === bestMax_ax ? "<b>"+Max_ax.toFixed(4)+"</b>" : Max_ax.toFixed(4)}</td>
+    <td>${Max_ay === bestMax_ay ? "<b>"+Max_ay.toFixed(4)+"</b>" : Max_ay.toFixed(4)}</td>
+    <td>${LapTime === bestLapTime ? "<b>"+LapTime.toFixed(4)+"</b>" : LapTime.toFixed(4)}</td>
     `;
 
     html += "</tr>";
@@ -1037,7 +1042,7 @@ const TrackB_ROWS = [
     tbody.innerHTML = html;
   }
 
-  renderTrackA();
+  renderTrackB();
 
 
 
