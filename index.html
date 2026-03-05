@@ -952,10 +952,10 @@ const TrackA_ROWS = [
       });
     }
 
-    const PathTrackVals_mean = rows.map(r=>r[2]);
-    const LapTime = rows.map(r=>r[4]);
-    const PathTrackVals_Max = rows.map(r=>r[3]);
-    const RMS_steer = rows.map(r=>r[5]);
+    const PathTrackVals_mean = rows.map(r=>r[1]);
+    const LapTime = rows.map(r=>r[3]);
+    const PathTrackVals_Max = rows.map(r=>r[2]);
+    const RMS_steer = rows.map(r=>r[4]);
     
     const bestPathTrackVals_mean = Math.min(...PathTrackVals_mean);
     const bestLapTime = Math.min(...LapTime);
@@ -969,10 +969,10 @@ const TrackA_ROWS = [
       html += "<tr>";
       html += `
     <td>${Controller}</td>
-    <td>${PathTrackVals_mean === bestPathTrackVals_mean ? "<b>"+PathTrackVals_mean.toFixed(4)+"</b>" : PathTrackVals_mean.toFixed(4)}</td>
-    <td>${PathTrackVals_Max === bestPathTrackVals_Max ? "<b>"+PathTrackVals_Max.toFixed(4)+"</b>" : PathTrackVals_Max.toFixed(4)}</td>
+    <td>${Mean === bestPathTrackVals_mean ? "<b>"+Mean.toFixed(4)+"</b>" : Mean.toFixed(4)}</td>
+    <td>${Max === bestPathTrackVals_Max ? "<b>"+Max.toFixed(4)+"</b>" : Max.toFixed(4)}</td>
     <td>${LapTime === bestLapTime ? "<b>"+LapTime.toFixed(4)+"</b>" : LapTime.toFixed(4)}</td>
-    <td>${RMS_steer === bestRMS_steer ? "<b>"+RMS_steer.toFixed(4)+"</b>" : RMS_steer.toFixed(4)}</td>
+    <td>${RMS === bestRMS_steer ? "<b>"+RMS.toFixed(4)+"</b>" : RMS.toFixed(4)}</td>
     `;
 
     html += "</tr>";
